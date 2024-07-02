@@ -1,0 +1,17 @@
+/* app.component.css */
+
+.navigation-container {
+    display: flex;
+  }
+  
+  .navigation-menu {
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .router-outlet-container {
+    flex: 1;
+    padding: 20px;
+  }
+  

@@ -1,0 +1,175 @@
+<head>
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<section id="content">
+  <main>
+    <!-- Title and Download Button -->
+    <div class="head-title">
+      <div class="left">
+        <h1>Dashboard</h1>
+      </div>
+      
+    </div>
+
+    <!-- Summary Boxes -->
+    <ul class="box-info">
+      <li>
+        
+        <i class='bx bxs-calendar-check'></i>
+        
+        <span class="text">
+          <mat-card-title>Registro Diario</mat-card-title>
+          <h3>{{ totalPasajerosHoy }}</h3>
+          <p>Hoy día</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+          <mat-card-title class="full-width-title">Registro Semanal</mat-card-title>
+          <h3>{{ totalPasajerosSemana }}</h3>
+          <p>Esta semana</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-calendar'></i>
+        <span class="text">
+            <div class="form-field-wrapper"> <!-- Agregado un div wrapper -->
+                <mat-form-field appearance="fill" class="month-select">
+                    <mat-label>Escoja un mes</mat-label>
+                    <mat-select #select [(value)]="mesSeleccionado" (selectionChange)="onMesChange($event)">
+                        <mat-option *ngFor="let mes of meses; let customIndex = index" [value]="customIndex">{{ mes }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-card-title>Registro mensual</mat-card-title>
+            <h3> {{ totalPasajerosMes }}</h3>
+            <p>Este mes</p>
+        </span>
+    </li>
+    
+    </ul>
+
+    
+
+    <!-- Vehicle Records Section -->
+    <div class="order">      
+      <mat-card class="cardWithShadow">              
+           
+                 <!-- Monthly Chart -->
+                  <apx-chart #apexChart  [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [title]="chartOptions.title" [tooltip]="chartOptions.tooltip"></apx-chart>
+                     
+          
+         
+      </mat-card>
+    </div>
+
+    <div class="order">      
+      <mat-card class="cardWithShadow">              
+        <!-- Monthly Price Sum Chart -->
+        <apx-chart #apexChartPriceSum  [series]="chartPriceSumOptions.series" [chart]="chartPriceSumOptions.chart" [xaxis]="chartPriceSumOptions.xaxis" [dataLabels]="chartPriceSumOptions.dataLabels" [plotOptions]="chartPriceSumOptions.plotOptions" [yaxis]="chartPriceSumOptions.yaxis" [title]="chartPriceSumOptions.title" [tooltip]="chartPriceSumOptions.tooltip"></apx-chart>
+      </mat-card>
+    </div>
+
+
+    <!-- Additional Info Boxes -->
+    <ul class="box-info">
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+            <h3>{{ origenMasComun }}</h3>
+            <h3>{{ getNombreRuta(parseOrigemMasComun()) }}</h3>
+            <p>Origen más común</p>
+        </span>
+    </li>
+
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+          <h3>{{ destinoMasComun }}</h3>
+          <h3>{{ getNombreRuta(parseDestinoMasComun()) }}</h3>
+          <p>Destino más común</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+          <h3>{{ totalPasajeros }}</h3>
+          <p>Total de pasajeros</p>
+        </span>
+      </li>
+    </ul>
+
+    <!-- Passenger Records Filter and Table -->
+    <div class="table-data">
+      <div class="todo">
+        <div class="row justify-content-center">
+          <!-- Filter Form -->
+          <form #filtroForm="ngForm" (ngSubmit)="aplicarFiltro()" class="filtro-form">
+            <div class="inputs-container">
+              <div class="input-wrapper">
+                <label for="dni">DNI</label>
+                <input type="text" name="dni" class="styled-input" placeholder="DNI" [(ngModel)]="filtroBusqueda.dni" (ngModelChange)="onBuscarChange()">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="head">
+          <h3>Todos</h3>
+          
+        </div>
+        <!-- Data Table -->
+        <table mat-table [dataSource]="dataSource" class="w-100">
+          <ng-container matColumnDef="pasajero">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Pasajero</th>
+            <td mat-cell *matCellDef="let element">{{ element.pasajero }}</td>
+          </ng-container>
+          <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Apellido</th>
+            <td mat-cell *matCellDef="let element">{{ element.Apellido }}</td>
+          </ng-container>
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Precio</th>
+            <td mat-cell *matCellDef="let element">{{ element.precio }}</td>
+          </ng-container>
+          <ng-container matColumnDef="dni">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">DNI</th>
+            <td mat-cell *matCellDef="let element">{{ element.dni }}</td>
+          </ng-container>
+          <ng-container matColumnDef="asiento">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Asiento</th>
+            <td mat-cell *matCellDef="let element">{{ element.asiento }}</td>
+          </ng-container>
+          <ng-container matColumnDef="fechaEmision">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Fecha Emisión</th>
+            <td mat-cell *matCellDef="let element">{{ element.fechaEmision | date: 'yyyy-MM-dd' : 'UTC' }}</td>
+          </ng-container>
+          <ng-container matColumnDef="fechaViaje">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Fecha Viaje</th>
+            <td mat-cell *matCellDef="let element">{{ element.fechaViaje | date: 'yyyy-MM-dd' : 'UTC' }}</td>
+          </ng-container>
+          <ng-container matColumnDef="nrocar">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Número de Carro</th>
+            <td mat-cell *matCellDef="let element">{{ element.nrocar }}</td>
+          </ng-container>
+          <ng-container matColumnDef="destino">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Destino</th>
+            <td mat-cell *matCellDef="let element">{{ getNombreRuta(element.destino) }}</td>
+          </ng-container>
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">Estado</th>
+            <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       
+        </table>
+        
+        <!-- Paginador -->
+        <mat-paginator #paginator [pageSize]="itemsPorPagina" [length]="dataSource.data.length"></mat-paginator>
+
+      </div>
+    </div>
+  </main>
+</section>

@@ -1,0 +1,408 @@
+#map {
+  height: 50em;
+  width: 70em;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+.left h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+#table-data {
+  border-radius: 20px;
+  background: var(--light);
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.card {
+  border-radius: 10px;
+  border: 2px solid #615EFC; /* Borde morado */
+}
+
+.card-header {
+  background-color: #615EFC; /* Fondo morado */
+  color: #ffffff; /* Texto blanco */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  border-bottom: none; /* Elimina la línea debajo del encabezado */
+  font-weight: bold; /* Hace el texto en negrita */
+  display: flex;
+  align-items: center;
+}
+
+.card-header i {
+  margin-right: 10px;
+}
+
+.card-body {
+  background-color: #ffffff;
+  border-top: none; /* Esto eliminará la línea superior si existe */
+}
+
+.form-control {
+  border: 1px solid #ced4da; /* Color del borde como en la imagen */
+  border-radius: 4px; /* Esquinas redondeadas ligeramente */
+  padding: 8px 12px; /* Espaciado interno para que el contenido no toque los bordes */
+  font-size: 16px; /* Tamaño de fuente para una mejor legibilidad */
+  margin-bottom: 15px; /* Espacio debajo de cada campo de formulario */
+  border-bottom-width: 3px; /* Grosor del borde inferior más grueso */
+}
+
+.form-control:focus {
+  border-color: #80bdff; /* Color del borde al enfocar el campo */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Sombra exterior para resaltar el campo enfocado */
+}
+
+/* Si quieres que todos los bordes sean del mismo grosor */
+.form-control, .select-control {
+  border-width: 2px; /* O el grosor que prefieras */
+}
+
+.select-control {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  border: 1px solid #615EFC; /* Ajustar al color del botón */
+  background-color: #615EFC;
+  color: #fff;
+  padding: 10px 15px; /* Ajustar al relleno deseado */
+  border-radius: 4px; /* Ajustar al radio de borde deseado */
+  font-size: 16px; /* Ajustar al tamaño de fuente deseado */
+}
+
+.btn-outline-primary {
+  border-color: #615EFC;
+  color: #5b5ea6;
+}
+
+.btn-outline-primary:hover {
+  background-color: #615EFC;
+  color: #ffffff;
+}
+
+.seating-chart {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.legend .seat {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin: 3px;
+}
+
+.legend .text {
+  font-size: 0.8em;
+  color: #6c757d;
+}
+
+.seat.spacer {
+  background-color: transparent;
+  border: none;
+}
+
+.card-contacto, .card-ubicacion {
+  width: calc(50% - 10px); /* Ancho del 50% menos el espacio entre los formularios */
+  max-width: 500px; /* Ancho máximo para evitar que los formularios se extiendan demasiado */
+  margin: 0 auto; /* Centra los formularios horizontalmente dentro del contenedor */
+}
+
+.row {
+  margin-top: 20px; /* Espacio entre los formularios */
+  display: flex;
+  justify-content: space-between; /* Alinea los formularios en los extremos */
+}
+
+
+
+.table-header {
+  background-color: #615EFC;
+  color: white;
+  border-radius: 30px; /* Bordes redondeados */
+}
+
+
+
+.btn-options {
+  width: 30px; /* Ancho personalizado para los botones */
+  margin-left: auto; /* Mover los botones a la derecha */
+}
+
+.search-bar {
+  width: 30%; /* Reducción del ancho del contenedor de búsqueda */
+  border: 1px solid rgb(177, 177, 177); /* Contorno de color morado */
+  border-radius: 10px; /* Bordes redondeados para el input */
+
+}
+
+
+
+.input-group-append {
+  border: none;
+}
+
+/* Importación de la fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Aplicación de Poppins globalmente */
+body, input, select, textarea, button, .mat-form-field, .mat-form-field .mat-label, .mat-form-field .mat-input-element, .mat-error {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Estilo para el encabezado de la tarjeta */
+.card-header {
+  position: relative;
+  background-color: #7a57d1; /* Color de fondo del encabezado */
+  color: #ffffff; /* Color del texto */
+  border-radius: 20px 20px 0 0; /* Bordes redondeados en la parte superior del encabezado */
+  font-weight: bold; /* Peso de la fuente en negrita */
+  padding: 15px 16px; /* Padding vertical de 22px */
+  font-size: 16px; /* Tamaño de fuente */
+  margin-bottom: 16px; /* Margen inferior */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+/* Estilo del pseudo-elemento ::before */
+.card-header::before {
+  content: "";
+  position: absolute;
+  top: -50px; /* Ajuste para hacer más grande el área redondeada */
+  left: -50px; /* Ajuste para hacer más grande el área redondeada */
+  right: -50px; /* Ajuste para hacer más grande el área redondeada */
+  height: 50px; /* Altura del área redondeada */
+  background-color: #7a57d1; /* Mismo color de fondo que el encabezado */
+  border-radius: 50px 50px 0 0; /* Bordes redondeados en la parte superior */
+  z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+}
+
+/* Estilo para la tarjeta */
+.card {
+  background-color: #ffffff; /* Color de fondo de la tarjeta */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 0; /* Sin padding */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  margin-bottom: 20px; /* Margen inferior */
+  position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+}
+
+/* Estilo para los campos de formulario de Angular Material */
+.mat-form-field {
+  width: 100%; /* Ancho completo */
+}
+
+.mat-form-field .mat-label {
+  color: #7a57d1; /* Color de la etiqueta */
+  font-size: 14px; /* Tamaño de la fuente */
+  font-weight: 600; /* Peso de la fuente */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-form-field .mat-input-element {
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #7a57d1; /* Color del borde de la caja de texto */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #7a57d1; /* Color del borde de la caja de texto (más grueso) */
+}
+
+input, select {
+  border-color: #7a57d1 !important; /* Color del borde de los inputs y selects */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-error {
+  color: red; /* Color del texto de error */
+  font-size: 12px; /* Tamaño de la fuente del error */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+button[mat-raised-button] {
+  margin-top: 20px; /* Margen superior */
+  width: 100%; /* Ancho completo del botón */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+/* Estilo para los títulos */
+.left h1 {
+  font-size: 2.3rem; /* Tamaño de fuente del encabezado */
+  font-weight: 600; /* Peso de la fuente */
+  color: #343a40; /* Color del texto */
+  margin-bottom: 20px; /* Margen inferior */
+  text-align: left; /* Alineación del texto */
+  padding-left: 0; /* Sin padding izquierdo */
+  margin-top: -40px; /* Margen superior negativo para ajuste */
+  font-family: Arial, sans-serif; /* Fuente específica para los títulos */
+}
+
+/* Estilo para el tab de navegación */
+#nav-tab {
+  margin-bottom: 20px; /* Margen inferior */
+  padding-left: 0; /* Sin padding izquierdo */
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.nav-tabs {
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.nav-tabs .nav-link-venta {
+  color: #495057; /* Color del texto del enlace */
+  background-color: #fff; /* Color de fondo del enlace */
+  border: none; /* Sin borde */
+  border-bottom: 3px solid #8282C8; /* Borde inferior */
+  font-weight: bold; /* Peso de la fuente */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border: none; /* Sin borde */
+  color: #495057; /* Color del texto del enlace activo */
+  background-color: #ffffff; /* Color de fondo del enlace activo */
+  border-bottom: 3px solid #7a57d1; /* Borde inferior del enlace activo */
+  font-weight: bold; /* Peso de la fuente */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.nav-link {
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Padding en el enlace */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.nav-link:hover {
+  background-color: #f8f9fa; /* Color de fondo en hover */
+}
+
+.nav-link, .nav-link-venta {
+  color: #000000; /* Color del texto del enlace */
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Padding en el enlace */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.p-4 {
+  padding: 0 !important; /* Padding cero */
+}
+
+.mt-4 {
+  margin-top: 2rem; /* Margen superior */
+}
+
+.full-width {
+  width: 100%; /* Ancho completo */
+}
+
+.form-container {
+  max-width: 1140px; /* Ancho máximo igual al de la tabla */
+  margin: auto; /* Centrar en el contenedor */
+  background-color: #ffffff; /* Color de fondo */
+  padding: 0; /* Sin padding */
+}
+
+
+.form-container[_ngcontent-ckt-c42] {
+  padding: 0 !important; /* Padding cero */
+  background-color: #ffffff; /* Color de fondo */
+}
+
+/* Estilo para el contenedor de los botones de perfil */
+.btn-group {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Dirección de fila para los botones */
+  gap: 10px; /* Espacio entre los botones */
+  justify-content: center; /* Centrar los botones en el contenedor */
+}
+
+/* Estilo para los botones de perfil */
+.perfil-btn {
+  width: 100%; /* Ancho completo */
+  height: 120px; /* Altura de los botones */
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Dirección de columna */
+  align-items: center; /* Alineación en el centro */
+  justify-content: center; /* Centrar contenido verticalmente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+}
+
+/* Estilo para las imágenes en los botones de perfil */
+.perfil-btn img {
+  width: 50px; /* Ancho de la imagen */
+  height: 50px; /* Altura de la imagen */
+  margin-bottom: 8px; /* Margen inferior */
+}
+
+/* Estilo para el botón activo */
+.perfil-btn.active {
+  background-color: #d0c8e6; /* Color de fondo cuando está activo */
+  color: white; /* Color del texto cuando está activo */
+  border: 2px solid #d0c8e6; /* Color del borde cuando está activo */
+}
+
+/* Estilo específico para el botón de Usuario */
+.perfil-btn.usuario img {
+  width: 30px; /* Ancho de la imagen del usuario */
+  height: 30px; /* Altura de la imagen del usuario */
+}
+
+.perfil-btn.usuario span {
+  font-size: 12px; /* Tamaño de la fuente del texto del usuario */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+
+
+
+

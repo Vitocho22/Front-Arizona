@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles de Encomienda</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="header">
+      <h5 class="modal-title">Detalles de Encomienda</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="regresarEncomienda()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div *ngIf="encomienda" class="personal-details">
+      <div class="section">
+        <h2><i class="fas fa-user"></i> Datos personales</h2>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label class="label-bold" for="dniRemitente">DNI Remitente:</label>
+              <p id="dniRemitente">{{ encomienda.dni_remi }}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="label-bold" for="remitente">Remitente:</label>
+              <p id="remitente">{{ encomienda.remitente }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="label-bold" for="dniDestinatario">DNI Destinatario:</label>
+              <p id="dniDestinatario">{{ encomienda.dni_dest }}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="label-bold" for="destinatario">Destinatario:</label>
+              <p id="destinatario">{{ encomienda.destinatario }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="label-bold" for="descripcion">Descripción:</label>
+              <p id="descripcion">{{ encomienda.descripcion }}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="label-bold" for="fechaEnvio">Fecha de Envío:</label>
+              <p id="fechaEnvio">{{ encomienda.fechaEnvio | date: 'yyyy-MM-dd' : 'UTC' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2><i class="fas fa-address-book"></i> Detalles</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="fechaEnvio">Fecha de Envío:</label>
+            <p id="fechaEnvio">{{ encomienda.fechaEnvio | date: 'yyyy-MM-dd' : 'UTC' }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="fechaEntrega">Fecha de Entrega:</label>
+            <p id="fechaEntrega">{{ encomienda.fechaEntrega | date: 'yyyy-MM-dd' : 'UTC' }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2><i class="fas fa-map-marker-alt"></i> Precio</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="estado">Estado:</label>
+            <p id="estado">{{ encomienda.estado }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="precio">Precio:</label>
+            <p id="precio">{{ encomienda.precio }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="ruta">Ruta:</label>
+            <p id="ruta">{{ getNombreRuta(encomienda.nombreRuta) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="regresarEncomienda()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+

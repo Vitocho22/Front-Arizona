@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del Pasajero</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <!-- Title and Close Button -->
+    <div class="header d-flex justify-content-between align-items-center mb-4">
+      <h1>Detalles del Pasajero</h1>
+      <button class="btn btn-primary" (click)="regresarListaPasajero()">
+        <img src="assets/icono/cancelar.png" alt="Cancelar" class="icon"> 
+      </button>
+    </div>
+    
+    <!-- Personal Details -->
+    <div class="personal-details">
+      <!-- Datos Personales -->
+      <div class="section">
+        <h2><i class="fas fa-user"></i> Datos Personales</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="nombres">Nombres:</label>
+            <p id="nombres">{{ pasajero?.pasajero }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="apellidos">Apellidos:</label>
+            <p id="apellidos">{{ pasajero?.Apellido }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="nroDNI">N° DNI:</label>
+            <p id="nroDNI">{{ pasajero?.dni }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="nroEdad">Edad:</label>
+            <p id="nroEdad">{{ pasajero?.edad }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="asiento">Asiento:</label>
+            <p id="asiento">{{ pasajero?.asiento }}</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Detalles del Viaje -->
+      <div class="section">
+        <h2><i class="fas fa-address-book"></i> Detalles del Viaje</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="nroCarro">Nro de Carro:</label>
+            <p id="nroCarro">{{pasajero?.nrocar }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="fechaEmision">Fecha de Emisión:</label>
+            <p id="fechaEmision">{{ pasajero?.fechaEmision | date: 'yyyy-MM-dd' : 'UTC' }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="fechaViaje">Fecha de Viaje:</label>
+            <p id="fechaViaje">{{ pasajero?.fechaViaje | date: 'yyyy-MM-dd' : 'UTC' }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="horaViaje">Hora de Viaje:</label>
+            <p id="horaViaje">{{ pasajero?.horaViaje }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="origen">Nombre de Ruta Origen:</label>
+            <p id="origen">{{ pasajero?.origen }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="destino">Nombre de Ruta Destino:</label>
+            <p id="destino">{{ pasajero?.destino }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="label-bold" for="precio">Precio:</label>
+            <p id="precio">{{ pasajero?.precio | currency }}</p>
+          </div>
+          <div class="col-md-6">
+            <label class="label-bold" for="estado">Estado:</label>
+            <p id="estado">{{ pasajero?.estado }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

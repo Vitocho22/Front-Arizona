@@ -1,0 +1,30 @@
+<div mat-subheader *ngIf="item.navCap" class="nav-caption" style="color: #ffffff;">
+  {{ item.navCap }}
+</div>
+<a
+  mat-list-item
+  (click)="onItemSelected(item)"
+  [ngClass]="{'activeMenu': item.route ? router.isActive(item.route, true) : false}"
+  class="menu-list-item"
+  *ngIf="!item.navCap"
+  style="color: #ffffff; transition: background-color 0.3s;"
+>
+  <mat-icon class="routeIcon" matListItemIcon style="color: #ffffff;">{{ item.iconName }}</mat-icon>
+  <span class="menu-text" style="color: #ffffff;">{{ item.displayName }}</span>
+</a>
+
+<style>
+/* Estilos globales incrustados para el menú */
+.activeMenu {
+  background-color: #673AB7; /* Color de fondo para el ítem activo, púrpura en este caso */
+}
+
+.menu-list-item:hover {
+  background-color: #37474F; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilos adicionales para el sidebar */
+.sidebarNav {
+  background-color: #1F1F1F; /* Fondo oscuro para la barra lateral */
+}
+</style>

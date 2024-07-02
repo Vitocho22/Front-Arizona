@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta de Pasajes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-4">
+    <div class="bg-gray p-4">
+      <div class="left">
+        <h1>Registro Personal</h1>
+      </div>
+      <ul class="nav nav-tabs tabsNav" id="nav-tab">
+        <li class="nav-item">
+          <a class="nav-link " href="/page/registroBus" id="reserva-tab">Alquilar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/page/listaAlquiler" id="lista-tab">Lista</a>
+        </li>
+      </ul>
+
+      <!-- Fila para la lista de alquileres -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mt-5">
+            <div class="d-flex justify-content-end align-items-center mb-2">
+              <!-- Barra de búsqueda -->
+              <div class="input-group search-bar">
+                <input 
+                  type="search" 
+                  class="form-control" 
+                  placeholder="Buscar por DNI" 
+                  (input)="onSearch($event)">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="table-header">
+                  <tr>
+                    <th>N°</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Teléfono</th>
+                    <th>Precio</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Aquí se añaden las filas de la tabla -->
+                  <tr *ngFor="let alquiler of filteredAlquileres; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ alquiler.fechaInicio | date: 'yyyy-MM-dd' : 'UTC' }}</td>
+                    <td>{{ alquiler.origen }}</td>
+                    <td>{{ alquiler.destino }}</td>
+                    <td>{{ alquiler.nombre }}</td>
+                    <td>{{ alquiler.apellido }}</td>
+                    <td>{{ alquiler.dni }}</td>
+                    <td>{{ alquiler.telefono }}</td>
+                    <td>{{ alquiler.precio }}</td>
+                    <td>
+                      <button (click)="mostrarDetallesAlquiler(alquiler)" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button (click)="editAlquiler(alquiler.id)" class="btn btn-info btn-sm">🔄</button>
+                      <button (click)="deleteAlquiler(alquiler.id)" class="btn btn-danger btn-sm">✖</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

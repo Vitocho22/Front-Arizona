@@ -1,0 +1,64 @@
+.form-title {
+  text-align: center;
+  font-size: 15px; /* Tamaño del título */
+}
+.user-input-box label {
+  margin-bottom: 0.5rem;
+  font-size: 14px; /* Tamaño de la letra para las etiquetas */
+}
+.form-control {
+  font-size: 14px; /* Tamaño de la letra para los campos de entrada */
+}
+.btn-primary {
+  font-size: 16px; /* Tamaño de la letra para el botón */
+  width: 100%;}
+
+  /* Estilos adicionales (puedes cambiarlos según tus necesidades) */
+  .form-title {
+      text-align: center;
+  }
+  .user-input-box label {
+      margin-bottom: 0.5rem;
+  }
+  .form-title {
+    text-align: center;
+}
+.user-input-box label {
+    margin-bottom: 0.5rem;
+}
+/*Boton*/
+.lbl{
+  display: inline-block;
+  width: 49px;
+  height: 27px;
+  background: #979797;
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  transition: .2s;
+}
+ 
+.lbl::after{
+  content: '';
+  display: block;
+  width: 17px;
+  height: 17px;
+  background: #eee;
+  border-radius: 100px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: .2s;
+}
+ 
+#switch:checked + .lbl::after{
+  left: 26px;
+}
+ 
+#switch:checked + .lbl{
+  background: #00C8B1;
+}
+ 
+#switch{
+  display: none;
+}

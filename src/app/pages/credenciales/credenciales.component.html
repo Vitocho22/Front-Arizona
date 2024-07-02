@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar Credenciales</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.21/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="form-container p-4">
+      <div class="left">
+        <h1>Generar Credenciales</h1>
+      </div>
+      <ul class="nav nav-tabs tabsNav" id="nav-tab">
+        <li class="nav-item">
+          <a class="nav-link" href="/page/registroPersonal" id="reserva-tab">Registro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/page/listaPersonal" id="lista-tab">Lista</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/page/credenciales" id="credenciales-tab">Credenciales</a>
+        </li>
+      </ul>
+      <div class="card">
+        <div class="card-header"><i class="fas fa-key"></i> Generar Credenciales</div>
+        <div class="card-body">
+          <div class="form-row align-items-center">
+            <div class="col-md-6">
+              <!-- Imagen según el género de la última persona registrada -->
+              <img [src]="imagenGenero" alt="Imagen de género" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-6">
+              <form (ngSubmit)="crearUsuario()">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>DNI</mat-label>
+                  <input matInput type="text" id="dni" placeholder="Ingrese su DNI" [(ngModel)]="dni" name="dni" required>
+                  <button *ngIf="dni" matSuffix mat-icon-button aria-label="Clear" (click)="dni = ''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <mat-error *ngIf="!dni">
+                    DNI es requerido.
+                  </mat-error>
+                </mat-form-field>
+          
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput type="password" id="password" placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password" required>
+                  <button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password = ''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  <mat-error *ngIf="!password">
+                    Contraseña es requerida.
+                  </mat-error>
+                </mat-form-field>
+          
+                <!-- Sección del Rol eliminada -->
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Rol</mat-label>
+                  <input matInput [value]="rol" disabled>
+                </mat-form-field>
+          
+                <button mat-raised-button color="primary" type="submit">Generar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

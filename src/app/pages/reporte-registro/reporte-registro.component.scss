@@ -1,0 +1,37 @@
+.inputs-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+  }
+  
+  .input-wrapper {
+    text-align: center; 
+  }
+  
+  label {
+    display: block; 
+    margin-bottom: 5px; 
+  }
+  
+  .styled-input {
+    border: 1px solid #ddd; 
+    border-radius: 10px;
+    padding: 8px; 
+    margin-right: 10px;
+    width: 150px;
+  }
+  
+  .styled-button {
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    padding: 8px; 
+    background-color: #3498db; 
+    color: #fff;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  .styled-button:hover {
+    background-color: #2980b9;
+  }
+  

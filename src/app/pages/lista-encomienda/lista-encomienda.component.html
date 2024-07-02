@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro y Lista de Encomiendas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.21/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-4">
+    <div class="bg-gray p-4">
+      <div class="left">
+        <h1>Lista Encomiendas</h1>
+      </div>
+
+      <ul class="nav nav-tabs tabsNav" id="nav-tab">
+        <li class="nav-item">
+          <a class="nav-link" href="/page/registroEncomienda" id="reserva-tab">Encomienda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/page/listaEncomienda" id="lista-tab">Lista</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/page/mapa" id="pasajeros-tab">Geolocalizacion</a>
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mt-5 d-flex justify-content-end">
+            <div class="input-group search-bar">
+              <input 
+                type="search" 
+                class="form-control" 
+                placeholder="Buscar por DNI" 
+                (input)="onSearch($event)">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="table-responsive mt-3">
+            <table class="table table-hover">
+              <thead class="table-header">
+                <tr>
+                  <th>N°</th>
+                  <th>DNI Remitente</th>
+                  <th>Remitente</th>
+                  <th>DNI Destinatario</th>
+                  <th>Destinatario</th>
+                  <th>Fecha de Envío</th>
+                  <th>Precio</th>
+                  <th>Destino</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let encomienda of filteredEncomiendas; let i = index">
+                  <td>{{ encomienda.id }}</td>
+                  <td>{{ encomienda.dni_remi }}</td>
+                  <td>{{ encomienda.remitente }}</td>
+                  <td>{{ encomienda.dni_dest }}</td>
+                  <td>{{ encomienda.destinatario }}</td>
+                  <td>{{ encomienda.fechaEnvio | date: 'yyyy-MM-dd' : 'UTC' }}</td>
+                  <td>{{ encomienda.precio }}</td>
+                  <td>{{ getNombreRuta(encomienda.nombreRuta) }}</td>
+                  <td class="btn-options">
+                    <button (click)="detallesEncomienda(encomienda.id)" class="btn btn-info btn-sm">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button (click)="editEncomienda(encomienda.id)" class="btn btn-info btn-sm">🔄</button>
+                    <button (click)="deleteEncomienda(encomienda.id)" class="btn btn-danger btn-sm">✖</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary">Imprimir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

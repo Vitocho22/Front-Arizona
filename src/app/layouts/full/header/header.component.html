@@ -1,0 +1,18 @@
+<mat-toolbar class="topbar" style="background-color: white; height: 80px;">
+  <!-- Mobile Menu -->
+  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  </button>
+  <!-- Notification Dropdown -->
+  <span class="flex-1-auto"></span>
+  <h5>{{ userRole }}</h5>
+  <button mat-icon-button [matMenuTriggerFor]="profilemenu" aria-label="Notifications">
+    <i class="fas fa-user-circle fa-icon"></i>
+  </button>
+
+  <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
+    <div class="p-x-12 m-t-12">
+      <a [routerLink]="['/authentication/login']" mat-stroked-button color="primary" (click)="logout()" class="w-100">Logout</a>
+    </div>
+  </mat-menu>
+</mat-toolbar>

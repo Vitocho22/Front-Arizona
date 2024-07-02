@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Personal</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.21/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+  <div class="bg-gray p-4">
+    <div class="left">
+      <h1>Registro Personal</h1>
+    </div>
+    <ul class="nav nav-tabs tabsNav" id="nav-tab">
+      <li class="nav-item">
+        <a class="nav-link" href="/page/registroEncomienda" id="reserva-tab">Encomienda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/page/listaEncomienda" id="pasajeros-tab">Lista</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/page/mapa" id="pasajeros-tab">Geolocalizacion</a>
+      </li>
+    </ul>
+
+
+
+
+<div class="mt-3">
+  <button class="btn btn-outline-success mr-2" (click)="ubicar()" >Geolocalizacion</button>
+  <button class="btn btn-outline-warning" (click)="recargar()" >Recargar</button>
+</div>
+<hr>
+<div id="map"></div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<mat-sidenav-container class="mainWrapper blue_theme light-theme" autosize autoFocus dir="ltr">
+  <!-- Vertical Sidebar -->
+  <mat-sidenav #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="!isOver"
+    (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()"
+    class="sidebarNav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <!-- Main Content -->
+  <mat-sidenav-content class="contentWrapper">
+    <div class="header-and-seats-container">
+      <!-- Encabezado y Formularios juntos a la izquierda -->
+      <div class="header-and-forms-container">
+        <app-header
+          [showToggle]="!isOver"
+          (toggleCollapsed)="toggleCollapsed()"
+          (toggleMobileNav)="sidenav.toggle()">
+        </app-header>
+        <div class="form-container">
+          <router-outlet></router-outlet> <!-- Aquí se renderizarán los formularios basados en la ruta -->
+        </div>
+        
+      </div>
+
+    </div>
+    
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>
+
+
+<style>
+ /* Estilos adicionales para el sidebar */
+.sidebarNav {
+  background-color: #152027; /* Fondo del sidebar */
+  color: #ffffff; /* Color del texto del sidebar a blanco */
+}
+
+/* Contenedor flex para el header y asientos */
+.header-and-seats-container {
+  display: flex; /* Usa flexbox para alinear los componentes horizontalmente */
+  flex-direction: row; /* Alinea los elementos en una fila */
+}
+
+/* Nuevo contenedor para el header y formularios */
+.header-and-forms-container {
+  flex: 1; /* Distribuye el espacio disponible equitativamente */
+  display: flex;
+  flex-direction: column; /* Alinea el encabezado y los formularios verticalmente */
+}
+
+app-asientos {
+  flex: 0; /* Permite que el componente de asientos ocupe el espacio restante */
+}
+
+.form-container {
+  padding: 8px; /* Espacio interno para los formularios */
+  background-color: #ffffff; /* Un fondo más claro para los formularios */
+}
+
+
+</style>

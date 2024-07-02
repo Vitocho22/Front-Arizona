@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta de Pasajes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.21/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid mt-4">
+  <div class="bg-gray p-4">
+    <div class="left">
+      <h1>Registro de Pasajero</h1>
+    </div>
+    <ul class="nav nav-tabs tabsNav" id="nav-tab">
+      <li class="nav-item">
+        <a class="nav-link active" href="/page/registroBoletas" id="venta-tab">Venta</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="page/listaPasajeros" id="pasajeros-tab">Pasajeros</a>
+      </li>
+    </ul>
+    <!-- Contenedor principal -->
+    <div class="row">
+      <!-- Formulario de registro de pasajeros y venta de pasajes -->
+      <div class="form-section col-md-8">
+        <form #form="ngForm" (ngSubmit)="guardarPasajero()" novalidate>
+          <!-- Información del Pasajero -->
+          <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-user"></i> Datos de los asientos</div>
+            <div class="card-body">
+              <div class="form-row justify-content-center">
+                <div class="form-group col-md-4">
+                  <label for="asiento">Número de Asiento</label>
+                  <input type="text" class="form-control large-square-input" id="asiento" [(ngModel)]="pasajero.asiento" name="asiento" placeholder="N°" readonly>
+                </div>
+                <div class="form-group text-center">
+                  <label for="origen">Número de Carro</label>
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label *ngFor="let nroCars of nroCar" class="btn btn-secondary custom-radio btn-lg my-2"
+                           [class.active]="pasajero.nrocar === nroCars.id"
+                           (click)="seleccionarCarro(nroCars.id)">
+                      <input type="radio" name="nroCar" [value]="nroCars.id" [checked]="pasajero.nrocar === nroCars.id" required>
+                      <i class="fas fa-car"></i>
+                      <br>
+                      {{ nroCars.nroCarro }}
+                    </label>
+                  </div>
+                  <div *ngIf="form.submitted && !pasajero.nrocar" class="text-danger">Número de Carro es requerido.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-user"></i> Datos de Clientes</div>
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Nombre del Pasajero</mat-label>
+                    <input matInput [(ngModel)]="pasajero.pasajero" name="pasajero" placeholder="Nombre del pasajero" required #nombre="ngModel">
+                    <mat-error *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">Nombre del pasajero es requerido.</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Apellido del Pasajero</mat-label>
+                    <input matInput [(ngModel)]="pasajero.Apellido" name="apellido" placeholder="Apellido del pasajero" required #apellido="ngModel">
+                    <mat-error *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">Apellido del pasajero es requerido.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>DNI del Pasajero</mat-label>
+                    <input matInput [(ngModel)]="pasajero.dni" name="dni" placeholder="DNI del pasajero" required #dni="ngModel">
+                    <mat-error *ngIf="dni.invalid && (dni.dirty || dni.touched)">DNI del pasajero es requerido.</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-2">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Edad</mat-label>
+                    <input matInput type="number" [(ngModel)]="pasajero.edad" name="edad" required #edad="ngModel">
+                    <mat-error *ngIf="edad.invalid && (edad.dirty || edad.touched)">Edad es requerida.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-map-marker-alt"></i> Datos del Viaje</div>
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Fecha de Emisión</mat-label>
+                    <input matInput type="date" [(ngModel)]="pasajero.fechaEmision" name="fechaEmision" required #fechaEmision="ngModel">
+                    <mat-error *ngIf="fechaEmision.invalid && (fechaEmision.dirty || fechaEmision.touched)">Fecha de Emisión es requerida.</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Fecha de Viaje</mat-label>
+                    <input matInput type="date" [(ngModel)]="pasajero.fechaViaje" name="fechaViaje" required #fechaViaje="ngModel">
+                    <mat-error *ngIf="fechaViaje.invalid && (fechaViaje.dirty || fechaViaje.touched)">Fecha de Viaje es requerida.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Origen</mat-label>
+                    <mat-select [(ngModel)]="pasajero.origen" name="origen" required #origen="ngModel">
+                      <mat-option value="">Selecciona un origen</mat-option>
+                      <mat-option *ngFor="let ruta of rutas" [value]="ruta.id">{{ ruta.ruta }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="origen.invalid && (origen.dirty || origen.touched)">Origen es requerido.</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Destino</mat-label>
+                    <mat-select [(ngModel)]="pasajero.destino" name="destino" required #destino="ngModel">
+                      <mat-option value="">Selecciona un destino</mat-option>
+                      <mat-option *ngFor="let ruta of rutas" [value]="ruta.id">{{ ruta.ruta }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="destino.invalid && (destino.dirty || destino.touched)">Destino es requerido.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Hora de Viaje</mat-label>
+                    <input matInput type="time" [(ngModel)]="pasajero.horaViaje" name="horaViaje" required #horaViaje="ngModel">
+                    <mat-error *ngIf="horaViaje.invalid && (horaViaje.dirty || horaViaje.touched)">Hora de Viaje es requerida.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-map-marker-alt"></i> Datos del Pasaje</div>
+            <div class="card-body">
+              <div class="form-group">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Precio</mat-label>
+                  <input matInput type="number" [(ngModel)]="pasajero.precio" name="precio" placeholder="Precio" required #precio="ngModel">
+                  <mat-error *ngIf="precio.invalid && (precio.dirty || precio.touched)">Precio es requerido.</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Estado</mat-label>
+                  <mat-select [(ngModel)]="pasajero.estado" name="estado" required #estado="ngModel">
+                    <mat-option value="">Selecciona un estado</mat-option>
+                    <mat-option value="Pagado">Pagado</mat-option>
+                    <mat-option value="Reservado">Reservado</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="estado.invalid && (estado.dirty || estado.touched)">Estado es requerido.</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <!-- Botón de Registro -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Registrar Pasajero</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Div para los asientos -->
+      <div class="seating-section">
+        <h5 class="card-title pt-2 pl-2">Asientos:</h5>  
+        <div class="seat-container">
+          <div class="row">
+            <ng-container *ngFor="let asiento of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]; let i = index">
+              <div class="col-2">
+                <div class="seat" [attr.data-seat]="asiento" (click)="seleccionarAsiento(asiento)">
+                  {{ asiento }}
+                </div>
+              </div>
+              <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="legend">
+          <div>
+            <div class="seat reserved"></div>
+            <span class="text">Reservado</span>
+          </div>
+          <div>
+            <div class="seat sold"></div>
+            <span class="text">Vendido</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

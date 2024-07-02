@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registro del personal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Agregar la referencia al archivo CSS de Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container "> 
+        <h1 class="form-title">Registro del personal</h1>
+        <form action="#" id="registrationForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fullName">Nombres</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Ingrese sus nombres" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="lastName">Apellidos</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Ingrese sus apellidos" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dni">Nro DNI</label>
+                        <input type="text" id="dni" name="dni" placeholder="Ingrese su número de DNI" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="phoneNumber">Celular</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Ingrese su número de celular" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="gender">Género</label>
+                        <select id="gender" name="gender" class="form-control"  >
+                            <option value="seleccione">Seleccione</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="birthdate">Fecha de Nacimiento</label>
+                        <input type="date" id="birthdate" name="birthdate" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="address">Dirección</label>
+                        <input type="text" id="address" name="address" placeholder="Ingrese su dirección" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="gender">Departamento</label>
+                    <select id="gender" name="gender" class="form-control">
+                        <option value="masculino">San Matin</option>
+                        <option value="femenino">Lima</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="province">Provincia</label>
+                        <input type="text" id="province" name="province" placeholder="Ingrese su provincia" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="district">Distrito</label>
+                        <input type="text" id="district" name="district" placeholder="Ingrese su distrito" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="district">Perfil</label>
+                      <input type="text" id="district" name="district" placeholder="Ingrese su distrito" class="form-control">
+                  </div>
+              </div>
+
+                <div class="col-md-4">
+                  <div class="form-submit-btn">
+                    <input type="button" value="Registrar" onclick="agregarRegistro()" class="btn btn-primary">
+                </div>
+                </div>
+            </div>
+           
+        </form>
+    </div>
+    <div class="container mt-5">
+      <h2>Registros</h2>
+      <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+              <thead class="thead-dark">
+                  <tr>
+                      <th>#</th>
+                      <th>PERFIL</th>
+                      <th>ESTADO</th>
+                      <th>NOMBRE</th>
+                      <th>APELLIDO</th>
+                      <th>Nro. Dni</th>
+                      <th>GENERO</th>
+                      <th>NACIMIENTO </th>
+                      <th>CELULAR</th>
+                      <th>EMAIL</th>
+                      <th>DIRECCION</th>
+                      <th>DEPARTAMENTO</th>
+                      <th>PROVINCIA</th>
+                      <th>DISTRITO</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <td>Ejemplo #</td>
+                <td>Ejemplo Perfil</td>
+                <td class="swtich-container">
+                  <input type="checkbox" id="switch">
+                  <label for="switch" class="lbl"></label>
+                  </td> 
+                <td>Ejemplo Nombre</td>
+                <td>Ejemplo Apellido</td>
+                <td>Ejemplo Nro. DNI</td>
+                <td>Ejemplo Género</td>
+                <td>Ejemplo Nacimiento</td>
+                <td>Ejemplo Celular</td>
+                <td>Ejemplo Email</td>
+                <td>Ejemplo Dirección</td>
+                <td>Ejemplo Departamento</td>
+                <td>Ejemplo Provincia</td>
+                <td>Ejemplo Distrito</td>
+            </tbody>
+          </table>
+      </div>
+  </div>
+
+  <!-- Agregar los scripts de Bootstrap y otros -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+      function agregarRegistro() {
+          // Lógica para obtener los valores del formulario y agregar una nueva fila a la tabla
+      }
+  </script>
+</body>
+</html>

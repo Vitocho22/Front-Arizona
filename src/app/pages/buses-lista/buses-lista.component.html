@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta de Pasajes</title>
+    <!-- Enlace a los estilos -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid mt-4">
+    <!-- Navegación de pestañas -->
+
+    <div class="bg-gray p-4">
+      <div class="left">
+        <h1>Lista de Buses</h1>
+      </div>
+      <ul class="nav nav-tabs tabsNav" id="nav-tab">
+        <li class="nav-item">
+          <a class="nav-link" href="/page/registroBuses" id="reserva-tab">Registro de Bus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/page/listaBuses" id="lista-tab">Lista de Buses</a>
+        </li>
+        
+       
+      </ul>
+
+
+    <!-- Fila para la lista de buses -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mt-5">
+          <div class="d-flex justify-content-end align-items-center mb-2">
+            <!-- Barra de búsqueda -->
+            <div class="input-group search-bar">
+              <input 
+                type="search" 
+                class="form-control" 
+                placeholder="Buscar por número de placa" 
+                [(ngModel)]="searchQuery" 
+                (input)="onSearch()">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-header">
+                  <tr>
+                  <th>N°</th>
+                  <th>Marca</th>
+                  <th>Número de Placa</th>
+                  <th>Modelo</th>
+                  <th>Color</th>
+                  <th>Número de Serie</th>
+                  <th>Número de Carro</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Aquí se repite la fila de la tabla por cada autobús -->
+                <tr *ngFor="let bus of filteredBuses; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ bus.marca }}</td>
+                  <td>{{ bus.nro_placa }}</td>
+                  <td>{{ bus.modelo }}</td>
+                  <td>{{ bus.color }}</td>
+                  <td>{{ bus.nroserie }}</td>
+                  <td>{{ bus.nroCarro }}</td>
+                  <td>
+                    <!-- Iconos o botones para opciones -->
+                    <button (click)="editBus(bus.id)" class="btn btn-info btn-sm">🔄</button>
+                    <button (click)="deleteBus(bus.id)" class="btn btn-danger btn-sm">✖</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

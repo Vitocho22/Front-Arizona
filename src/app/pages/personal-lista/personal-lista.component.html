@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Personal</title>
+  <!-- Enlace a los estilos -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+  <div class="bg-gray p-4">
+    <div class="left">
+      <h1>Lista Personal</h1>
+    </div>
+    <ul class="nav nav-tabs tabsNav" id="nav-tab">
+      <li class="nav-item">
+        <a class="nav-link" href="/page/registroPersonal" id="reserva-tab">Registro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/page/listaPersonal" id="lista-tab">Lista</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/page/credenciales" id="credenciales-tab">Credenciales</a>
+      </li>
+    </ul>
+
+    <!-- Fila para la lista de personal -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mt-0"> <!-- Cambiado de mt-5 a mt-0 -->
+          <div class="d-flex justify-content-end align-items-center mb-2">
+            <!-- Barra de búsqueda -->
+            <div class="input-group search-bar">
+              <input 
+                type="search" 
+                class="form-control" 
+                placeholder="Buscar" 
+                [(ngModel)]="searchQuery" 
+                (input)="onSearch()">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+            </div>
+          </div>
+    
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-header">
+                <tr>
+                  <th>Nº</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>DNI</th>
+                  <th>Celular</th>
+                  <th>Email</th>
+                  <th>Perfil</th>
+                  <th class="btn-options">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let persona of paginatedPersonal; let i = index">
+                  <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                  <td>{{ persona.nombres }}</td>
+                  <td>{{ persona.apellidos }}</td>
+                  <td>{{ persona.nroDNI }}</td>
+                  <td>{{ persona.celular }}</td>
+                  <td>{{ persona.email }}</td>
+                  <td>{{ persona.perfil }}</td>
+                  <td class="btn-options">
+                    <button (click)="detallesPersonal(persona.id)" class="btn btn-info btn-sm">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button (click)="editPersonal(persona.id)" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></button>
+                    <button (click)="deletePersonal(persona.id)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    
+          <!-- Contenedor de los botones de paginación -->
+          <div class="pagination-container">
+            <span class="pagination-text">
+              Página {{ currentPage }} de {{ totalPages }} 
+            </span>
+            <button 
+              class="btn btn-pagination" 
+              (click)="previousPage()" 
+              [disabled]="currentPage === 1"
+              aria-label="Página Anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button 
+              class="btn btn-pagination" 
+              (click)="nextPage()" 
+              [disabled]="currentPage >= totalPages"
+              aria-label="Página Siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Scripts de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

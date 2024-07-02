@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boleto de Viaje</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Contenedor del ticket -->
+  <div class="ticket-container">
+    <div class="ticket-header">
+      <img src="/assets/icono/logoTick.png" alt="Logotipo" class="ticket-logo">
+      <h1 class="ticket-title">BOLETO DE VIAJE</h1>
+      <p>EMPRESA DE TRANSPORTES GRUPO J.C.C</p>
+      <p>SEÑOR DE ANCARA E.I.R.L</p>
+      <p>RUC: 20610663797</p>
+    </div>
+  
+    <div class="ticket-body">
+      <p><strong>Pasajero:</strong> {{ pasajero.pasajero }} {{ pasajero.Apellido }}</p>
+      <p><strong>DNI:</strong> {{ pasajero.dni }}</p>
+      <p><strong>Asiento:</strong> {{ pasajero.asiento }} - <strong>Nro de Carro:</strong> {{ getNroCar(pasajero.nrocar) }}</p>
+      <p><strong>Fecha de Emisión:</strong> {{ pasajero.fechaEmision | date: 'yyyy-MM-dd' }}</p>
+      <p><strong>Fecha de Viaje:</strong> {{ pasajero.fechaViaje | date: 'yyyy-MM-dd' }}</p>
+      <p><strong>Hora de Viaje:</strong> {{ pasajero.horaViaje }}</p>
+      <p><strong>Origen:</strong> {{ getNombreRuta(pasajero.origen) }} - <strong>Destino:</strong> {{ getNombreRuta(pasajero.destino) }}</p>
+      <p><strong>Precio:</strong> {{ pasajero.precio | currency }}</p>
+      <p><strong>Estado:</strong> {{ pasajero.estado }}</p>
+    </div>
+  
+    <div class="ticket-footer">
+      <p>El pasajero que no se presente a la hora indicada perderá el valor total del pasaje.</p>
+      <p>Todo pasajero tendrá derecho a 15 Kg de equipaje.</p>
+      <p>"La empresa no se responsabiliza por equipaje, bultos perdidos no declarados y despachos sin sus respectivos documentos."</p>
+      <p>Todo pasajero se encuentra asegura en <strong>SEGUROS LA POSITIVA</strong></p>
+    </div>
+  </div>
+  
+  <!-- Botón para imprimir fuera del contenedor del ticket -->
+  <div class="print-button-container">
+    <button (click)="printTicket()">Imprimir Ticket</button>
+  </div>
+</body>
+</html>

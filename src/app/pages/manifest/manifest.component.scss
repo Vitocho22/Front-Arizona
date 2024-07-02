@@ -1,0 +1,406 @@
+.manifest {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .logo img {
+    width: 100px;
+  }
+  
+  .company-info {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .company-info h1 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .company-info p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .ruc-info {
+    text-align: right;
+  }
+  
+  .ruc-info p, .ruc-info h2 {
+    margin: 5px 0;
+  }
+  
+  .ruc-info h2 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .details {
+    margin-bottom: 10px;
+  }
+  
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-row label {
+    font-weight: bold;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  
+  
+
+
+  .manifest {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .logo img {
+    width: 100px;
+  }
+  
+  .company-info {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .company-info h1 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .company-info p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .ruc-info {
+    text-align: right;
+  }
+  
+  .ruc-info p, .ruc-info h2 {
+    margin: 5px 0;
+  }
+  
+  .ruc-info h2 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .details {
+    margin-bottom: 10px;
+  }
+  
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-row label {
+    font-weight: bold;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  
+  .print-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .print-button button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .print-button button:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+
+
+  /* Importación de la fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Aplicación de Poppins globalmente */
+body, input, select, textarea, button, .mat-form-field, .mat-form-field .mat-label, .mat-form-field .mat-input-element, .mat-error {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Estilo para el encabezado de la tarjeta */
+.card-header {
+  position: relative;
+  background-color: #7a57d1; /* Color de fondo del encabezado */
+  color: #ffffff; /* Color del texto */
+  border-radius: 20px 20px 0 0; /* Bordes redondeados en la parte superior del encabezado */
+  font-weight: bold; /* Peso de la fuente en negrita */
+  padding: 22px 16px; /* Padding vertical de 22px */
+  font-size: 16px; /* Tamaño de fuente */
+  margin-bottom: 16px; /* Margen inferior */
+  text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+/* Estilo del pseudo-elemento ::before */
+.card-header::before {
+  content: "";
+  position: absolute;
+  top: -50px; /* Ajuste para hacer más grande el área redondeada */
+  left: -50px; /* Ajuste para hacer más grande el área redondeada */
+  right: -50px; /* Ajuste para hacer más grande el área redondeada */
+  height: 50px; /* Altura del área redondeada */
+  background-color: #7a57d1; /* Mismo color de fondo que el encabezado */
+  border-radius: 50px 50px 0 0; /* Bordes redondeados en la parte superior */
+  z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+}
+
+/* Estilo para la tarjeta */
+.card {
+  background-color: #ffffff; /* Color de fondo de la tarjeta */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 0; /* Sin padding */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  margin-bottom: 20px; /* Margen inferior */
+  position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+}
+
+/* Estilo para los campos de formulario de Angular Material */
+.mat-form-field {
+  width: 100%; /* Ancho completo */
+}
+
+.mat-form-field .mat-label {
+  color: #7a57d1; /* Color de la etiqueta */
+  font-size: 14px; /* Tamaño de la fuente */
+  font-weight: 600; /* Peso de la fuente */
+}
+
+.mat-form-field .mat-input-element {
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #7a57d1; /* Color del borde de la caja de texto */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #7a57d1; /* Color del borde de la caja de texto (más grueso) */
+}
+
+input, select {
+  border-color: #7a57d1 !important; /* Color del borde de los inputs y selects */
+}
+
+.mat-error {
+  color: red; /* Color del texto de error */
+  font-size: 12px; /* Tamaño de la fuente del error */
+}
+
+button[mat-raised-button] {
+  margin-top: 20px; /* Margen superior */
+  width: 100%; /* Ancho completo del botón */
+}
+
+/* Estilo para los títulos */
+.left h1 {
+  font-size: 2.3rem; /* Tamaño de fuente del encabezado */
+  font-weight: 600; /* Peso de la fuente */
+  color: #343a40; /* Color del texto */
+  margin-bottom: 20px; /* Margen inferior */
+  text-align: left; /* Alineación del texto */
+  padding-left: 0; /* Sin padding izquierdo */
+  margin-top: -40px; /* Margen superior negativo para ajuste */
+}
+
+/* Estilo para el tab de navegación */
+#nav-tab {
+  margin-bottom: 20px; /* Margen inferior */
+  padding-left: 0; /* Sin padding izquierdo */
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.nav-tabs {
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.nav-tabs .nav-link-venta {
+  color: #495057; /* Color del texto del enlace */
+  background-color: #fff; /* Color de fondo del enlace */
+  border: none; /* Sin borde */
+  border-bottom: 3px solid #8282C8; /* Borde inferior */
+  font-weight: bold; /* Peso de la fuente */
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border: none; /* Sin borde */
+  color: #495057; /* Color del texto del enlace activo */
+  background-color: #ffffff; /* Color de fondo del enlace activo */
+  border-bottom: 3px solid #7a57d1; /* Borde inferior del enlace activo */
+  font-weight: bold; /* Peso de la fuente */
+}
+
+.nav-link {
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Padding en el enlace */
+}
+
+.nav-link:hover {
+  background-color: #f8f9fa; /* Color de fondo en hover */
+}
+
+.nav-link, .nav-link-venta {
+  color: #000000; /* Color del texto del enlace */
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Padding en el enlace */
+}
+
+.p-4 {
+  padding: 0 !important; /* Padding cero */
+}
+
+.mt-5 {
+  margin-top: 1rem !important; /* Reducir el margen superior */
+}
+
+.full-width {
+  width: 100%; /* Ancho completo */
+}
+
+.form-container {
+  width: 100%; /* Ancho completo */
+  max-width: 900px; /* Ancho máximo */
+  margin: auto; /* Centrar en el contenedor */
+  background-color: #ffffff; /* Color de fondo */
+  padding: 0; /* Sin padding */
+}
+
+/* Estilo para el contenedor de los botones de perfil */
+.btn-group {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Dirección de fila para los botones */
+  gap: 10px; /* Espacio entre los botones */
+  justify-content: center; /* Centrar los botones en el contenedor */
+}
+
+/* Estilo para los botones de perfil */
+.perfil-btn {
+  width: 100%; /* Ancho completo */
+  height: 120px; /* Altura de los botones */
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Dirección de columna */
+  align-items: center; /* Alineación en el centro */
+  justify-content: center; /* Centrar contenido verticalmente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+}
+
+/* Estilo para las imágenes en los botones de perfil */
+.perfil-btn img {
+  width: 50px; /* Ancho de la imagen */
+  height: 50px; /* Altura de la imagen */
+  margin-bottom: 8px; /* Margen inferior */
+}
+
+/* Estilo para el botón activo */
+.perfil-btn.active {
+  background-color: #d0c8e6; /* Color de fondo cuando está activo */
+  color: white; /* Color del texto cuando está activo */
+  border: 2px solid #d0c8e6; /* Color del borde cuando está activo */
+}
+
+/* Estilo específico para el botón de Usuario */
+.perfil-btn.usuario img {
+  width: 30px; /* Ancho de la imagen del usuario */
+  height: 30px; /* Altura de la imagen del usuario */
+}
+
+.perfil-btn.usuario span {
+  font-size: 12px; /* Tamaño de la fuente del texto del usuario */
+}
+
+.table-header th {
+  background-color: #7a57d1; /* Color de fondo de la cabecera de la tabla */
+  color: #ffffff; /* Color del texto */
+  font-weight: bold; /* Peso de la fuente */
+}
+
+/* Estilo para los botones dentro de las filas de la tabla */
+.btn-options {
+  text-align: center; /* Alineación del contenido del botón */
+}
+
+/* Estilo para el cuadro de búsqueda */
+.search-bar {
+  max-width: 300px; /* Tamaño máximo del cuadro de búsqueda */
+  margin-right: 0; /* Alinea el cuadro de búsqueda a la derecha */
+}
+
+.search-bar .form-control {
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra */
+  padding: 5px 10px; /* Padding dentro del cuadro de búsqueda */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+/* Estilo para el ícono de búsqueda */
+.search-bar .input-group-text {
+  background-color: #7a57d1; /* Color de fondo del ícono de búsqueda */
+  border-radius: 20px; /* Bordes redondeados del ícono */
+  color: #fff; /* Color del ícono */
+}

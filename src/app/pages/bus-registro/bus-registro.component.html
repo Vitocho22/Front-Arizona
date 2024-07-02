@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Alquiler</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.21/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid mt-4">
+    <!-- Navegación de pestañas -->
+    <div class="bg-gray p-4">
+      <div class="left">
+        <h1>Registro de Alquiler</h1>
+      </div>
+      <ul class="nav nav-tabs tabsNav" id="nav-tab">
+        <li class="nav-item">
+          <a class="nav-link active" href="/page/registroBus" id="reserva-tab">Alquiler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/page/listaAlquiler" id="lista-tab">Lista</a>
+        </li>
+      </ul>
+
+      <!-- Formulario de Registro de Alquiler -->
+      <form (submit)="crearAlquiler()" class="mt-4">
+        <!-- Datos Personales -->
+        <div class="card mt-3">
+          <div class="card-header"><i class="fas fa-user"></i> Datos Personales</div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>N° DNI</mat-label>
+                  <input matInput id="dni" [(ngModel)]="nuevoAlquiler.dni" name="dni" placeholder="87536217" required>
+                  <mat-error *ngIf="!nuevoAlquiler.dni">
+                    N° DNI es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Teléfono</mat-label>
+                  <input matInput type="tel" id="telefono" [(ngModel)]="nuevoAlquiler.telefono" name="telefono" placeholder="910355541" required>
+                  <mat-error *ngIf="!nuevoAlquiler.telefono">
+                    Teléfono es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput id="nombre" [(ngModel)]="nuevoAlquiler.nombre" name="nombre" placeholder="Andrea Rosa" required>
+                  <mat-error *ngIf="!nuevoAlquiler.nombre">
+                    Nombre es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Apellido</mat-label>
+                  <input matInput id="apellido" [(ngModel)]="nuevoAlquiler.apellido" name="apellido" placeholder="Casas López" required>
+                  <mat-error *ngIf="!nuevoAlquiler.apellido">
+                    Apellido es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <!-- Información de Viaje -->
+        <div class="card mt-3">
+          <div class="card-header"><i class="fas fa-map-marker-alt"></i> Información de Viaje</div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Origen</mat-label>
+                  <input matInput id="origen" [(ngModel)]="nuevoAlquiler.origen" name="origen" placeholder="Paucartambo" required>
+                  <mat-error *ngIf="!nuevoAlquiler.origen">
+                    Origen es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Destino</mat-label>
+                  <input matInput id="destino" [(ngModel)]="nuevoAlquiler.destino" name="destino" placeholder="Cusco" required>
+                  <mat-error *ngIf="!nuevoAlquiler.destino">
+                    Destino es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Fecha de Inicio</mat-label>
+                  <input matInput type="date" id="fechaInicio" [(ngModel)]="nuevoAlquiler.fechaInicio" name="fechaInicio" required>
+                  <mat-error *ngIf="!nuevoAlquiler.fechaInicio">
+                    Fecha de Inicio es requerida.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Fecha de Fin</mat-label>
+                  <input matInput type="date" id="fechaFin" [(ngModel)]="nuevoAlquiler.fechaFin" name="fechaFin" required>
+                  <mat-error *ngIf="!nuevoAlquiler.fechaFin">
+                    Fecha de Fin es requerida.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Duración del Alquiler</mat-label>
+                  <input matInput id="duracion" [(ngModel)]="nuevoAlquiler.duracion" name="duracion" placeholder="Duración del Alquiler" required>
+                  <mat-error *ngIf="!nuevoAlquiler.duracion">
+                    Duración del Alquiler es requerida.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Detalles de la Reserva o Alquiler -->
+        <div class="card mt-3">
+          <div class="card-header"><i class="fas fa-dollar-sign"></i> Detalles de la Reserva o Alquiler</div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Precio</mat-label>
+                  <input matInput id="precio" [(ngModel)]="nuevoAlquiler.precio" name="precio" placeholder="50" required>
+                  <mat-error *ngIf="!nuevoAlquiler.precio">
+                    Precio es requerido.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <button type="submit" mat-raised-button color="primary" class="full-width">Registrar Alquiler</button>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts de Angular Material -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.21/angular-material.min.js"></script>
+</body>
+</html>

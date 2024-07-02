@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta de Pasajes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="bg-gray p-4">
+      <div class="left">
+        <h1>Lista de Pasajeros</h1>
+      </div>
+      <ul class="nav nav-tabs tabsNav" id="nav-tab">
+        <li class="nav-item">
+          <a class="nav-link" href="/page/registroBoletas" id="venta-tab">Venta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/page/listaPasajeros" id="pasajeros-tab">Pasajeros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/page/manifest/:id" id="manifesto-tab">Manifiesto</a>
+        </li>
+      </ul>
+
+      <!-- Fila para la lista de pasajeros -->
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-header">
+                <tr>
+                  <th>N°</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>DNI</th>
+                  <th>Asiento</th>
+                  <th># Carro</th> <!-- Añadir la columna Nro de Carro -->
+                  <th>Edad</th>
+                  <th>Hora de Viaje</th>
+                  <th>Destino</th>
+                  <th>Precio</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pasajero of pasajeros; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ pasajero.pasajero }}</td>
+                  <td>{{ pasajero.Apellido }}</td>
+                  <td>{{ pasajero.dni }}</td>
+                  <td>{{ pasajero.asiento }}</td>
+                  <td>{{ getNroCar(pasajero.nrocar) }}</td> <!-- Asegúrate de que `nrocar` es el id del bus -->
+                  <td>{{ pasajero.edad }}</td>
+                  <td>{{ pasajero.horaViaje }}</td>
+                  <td>{{ getNombreRuta(pasajero.destino) }}</td> <!-- Asegúrate de que `destino` es el id de la ruta -->
+                  <td>{{ pasajero.precio }}</td>
+                  <td>
+                    <button class="btn btn-info btn-sm mr-2" (click)="mostrarTicket(pasajero)">
+                      <i class="fa fa-eye"></i>
+                    </button>
+                    <button class="btn btn-success btn-sm mr-2" (click)="detallesPasajero(pasajero.id)">
+                      <i class="fa fa-info-circle"></i>
+                    </button>
+                    <button class="btn btn-warning btn-sm mr-2" (click)="editPasajero(pasajero.id)">
+                      <i class="fa fa-pencil"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" (click)="eliminarPasajero(pasajero.id)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" (click)="exportToExcel()">Exportar a Excel</button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+/* Importación de la fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Aplicación de Poppins globalmente */
+body, input, select, textarea, button, .mat-form-field, .mat-form-field .mat-label, .mat-form-field .mat-input-element, .mat-error {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Estilo para el encabezado de la tarjeta */
+.card-header {
+  position: relative;
+  background-color: #7a57d1; /* Color de fondo del encabezado */
+  color: #ffffff; /* Color del texto */
+  border-radius: 20px 20px 0 0; /* Bordes redondeados en la parte superior del encabezado */
+  font-weight: bold; /* Peso de la fuente en negrita */
+  padding: 15px 16px; /* Padding vertical de 22px */
+  font-size: 16px; /* Tamaño de fuente */
+  margin-bottom: 16px; /* Margen inferior */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+/* Estilo del pseudo-elemento ::before */
+.card-header::before {
+  content: "";
+  position: absolute;
+  top: -50px; /* Ajuste para hacer más grande el área redondeada */
+  left: -50px; /* Ajuste para hacer más grande el área redondeada */
+  right: -50px; /* Ajuste para hacer más grande el área redondeada */
+  height: 50px; /* Altura del área redondeada */
+  background-color: #7a57d1; /* Mismo color de fondo que el encabezado */
+  border-radius: 50px 50px 0 0; /* Bordes redondeados en la parte superior */
+  z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del elemento */
+}
+
+/* Estilo para la tarjeta */
+.card {
+  background-color: #ffffff; /* Color de fondo de la tarjeta */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 0; /* Sin padding */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  margin-bottom: 20px; /* Margen inferior */
+  position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+}
+
+/* Estilo para los campos de formulario de Angular Material */
+.mat-form-field {
+  width: 100%; /* Ancho completo */
+}
+
+.mat-form-field .mat-label {
+  color: #7a57d1; /* Color de la etiqueta */
+  font-size: 14px; /* Tamaño de la fuente */
+  font-weight: 600; /* Peso de la fuente */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-form-field .mat-input-element {
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #7a57d1; /* Color del borde de la caja de texto */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #7a57d1; /* Color del borde de la caja de texto (más grueso) */
+}
+
+input, select {
+  border-color: #7a57d1 !important; /* Color del borde de los inputs y selects */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.mat-error {
+  color: red; /* Color del texto de error */
+  font-size: 12px; /* Tamaño de la fuente del error */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+button[mat-raised-button] {
+  margin-top: 20px; /* Margen superior */
+  width: 100%; /* Ancho completo del botón */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+/* Estilo para los títulos */
+.left h1 {
+  font-size: 2.3rem; /* Tamaño de fuente del encabezado */
+  font-weight: 600; /* Peso de la fuente */
+  color: #343a40; /* Color del texto */
+  margin-bottom: 20px; /* Margen inferior */
+  text-align: left; /* Alineación del texto */
+  padding-left: 0; /* Sin padding izquierdo */
+  margin-top: -40px; /* Margen superior negativo para ajuste */
+  font-family: Arial, sans-serif; /* Fuente específica para los títulos */
+}
+
+/* Estilo para el tab de navegación */
+#nav-tab {
+  margin-bottom: 20px; /* Margen inferior */
+  padding-left: 0; /* Sin padding izquierdo */
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.nav-tabs {
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.nav-tabs .nav-link-venta {
+  color: #495057; /* Color del texto del enlace */
+  background-color: #fff; /* Color de fondo del enlace */
+  border: none; /* Sin borde */
+  border-bottom: 3px solid #8282C8; /* Borde inferior */
+  font-weight: bold; /* Peso de la fuente */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border: none; /* Sin borde */
+  color: #495057; /* Color del texto del enlace activo */
+  background-color: #ffffff; /* Color de fondo del enlace activo */
+  border-bottom: 3px solid #7a57d1; /* Borde inferior del enlace activo */
+  font-weight: bold; /* Peso de la fuente */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.nav-link {
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Padding en el enlace */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.nav-link:hover {
+  background-color: #f8f9fa; /* Color de fondo en hover */
+}
+
+.nav-link, .nav-link-venta {
+  color: #000000; /* Color del texto del enlace */
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Padding en el enlace */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+.p-4 {
+  padding: 0 !important; /* Padding cero */
+}
+
+.mt-4 {
+  margin-top: 2rem; /* Margen superior */
+}
+
+.full-width {
+  width: 100%; /* Ancho completo */
+}
+
+.form-container {
+  max-width: 1140px; /* Ancho máximo igual al de la tabla */
+  margin: auto; /* Centrar en el contenedor */
+  background-color: #ffffff; /* Color de fondo */
+  padding: 0; /* Sin padding */
+}
+
+
+.form-container[_ngcontent-ckt-c42] {
+  padding: 0 !important; /* Padding cero */
+  background-color: #ffffff; /* Color de fondo */
+}
+
+/* Estilo para el contenedor de los botones de perfil */
+.btn-group {
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Dirección de fila para los botones */
+  gap: 10px; /* Espacio entre los botones */
+  justify-content: center; /* Centrar los botones en el contenedor */
+}
+
+/* Estilo para los botones de perfil */
+.perfil-btn {
+  width: 100%; /* Ancho completo */
+  height: 120px; /* Altura de los botones */
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Dirección de columna */
+  align-items: center; /* Alineación en el centro */
+  justify-content: center; /* Centrar contenido verticalmente */
+  border-radius: 8px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+}
+
+/* Estilo para las imágenes en los botones de perfil */
+.perfil-btn img {
+  width: 50px; /* Ancho de la imagen */
+  height: 50px; /* Altura de la imagen */
+  margin-bottom: 8px; /* Margen inferior */
+}
+
+/* Estilo para el botón activo */
+.perfil-btn.active {
+  background-color: #d0c8e6; /* Color de fondo cuando está activo */
+  color: white; /* Color del texto cuando está activo */
+  border: 2px solid #d0c8e6; /* Color del borde cuando está activo */
+}
+
+/* Estilo específico para el botón de Usuario */
+.perfil-btn.usuario img {
+  width: 30px; /* Ancho de la imagen del usuario */
+  height: 30px; /* Altura de la imagen del usuario */
+}
+
+.perfil-btn.usuario span {
+  font-size: 12px; /* Tamaño de la fuente del texto del usuario */
+  font-family: 'Poppins', sans-serif !important; /* Forzar la aplicación de la fuente Poppins */
+}
+
+/* Estilos para el título de la izquierda */
+.left h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+/* Estilos para la tabla de datos */
+#table-data {
+  border-radius: 20px;
+  background: var(--light);
+  padding: 24px;
+  overflow-x: auto;
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-link, .nav-link-venta {
+  color: #000000;
+  font-size: 16px;
+  border: none;
+  padding: 8px 16px;
+}
+
+.nav-link:hover, .nav-link-venta:hover {
+  background-color: #f8f9fa;
+}
+
+.nav-tabs .nav-link-venta.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Estilos generales */
+body {
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para la sección de formulario */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 20px;
+}
+
+/* Estilos para la sección de asientos */
+.seating-section {
+  flex: 1;
+  max-width: 400px; /* Ajusta el ancho máximo de la sección de asientos */
+  margin: 0 auto; /* Centra la sección horizontalmente */
+}
+
+/* Estilos para el contenedor principal */
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+/* Estilos para los asientos */
+.seating-section .card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.seat:hover {
+  background-color: #e4e4e4;
+}
+
+.seat.reserved {
+  background-color: #615EFC;
+}
+
+.seat.sold {
+  background-color: #ff6161;
+}
+
+/* Estilos para la leyenda de asientos */
+.legend {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los elementos dentro de la leyenda */
+  margin-top: 20px;
+}
+
+.legend .seat {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+/* Ajustes para que el texto de Reservado y Vendido esté alineado verticalmente con los cuadros */
+.legend .text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ajustes para que el título de los asientos esté más arriba */
+.card-title {
+  margin-bottom: 5px;
+}
+
+/* Ajustes para las columnas de los asientos */
+.seating-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra horizontalmente las columnas */
+}
+
+/* Ajustes para las columnas de los asientos */
+.col-2 {
+  width: calc(30% - 10px); /* Ajusta el ancho de las columnas */
+  margin: 16px; /* Espacio entre las columnas */
+}
+
+.seat-container {
+  border: 2px solid #9393a8; /* Borde del contenedor */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px; /* Espacio interno */
+  background-color: #f9f9f9; /* Color de fondo */
+  margin-top: 10px; /* Espacio superior */
+  display: flex; /* Usar Flexbox */
+  flex-direction: column; /* Disponer elementos en columna */
+  align-items: center; /* Centrar horizontalmente los elementos */
+  text-align: center; /* Centra el contenido dentro de cada asiento */
+}
+
+.seat {
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 59px; /* Ajusta el ancho de los asientos */
+  height: 59px; /* Ajusta el alto de los asientos */
+  font-size: 16px; /* Ajusta el tamaño del texto dentro de los asientos */
+  margin: auto; /* Centra horizontalmente cada asiento */
+}
+
+.w-100 {
+  width: 100%;
+  margin: 5px 0;
+}
+
+/* Estilos para los cuadros de Reservado y Vendido */
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-asiento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 200px; /* Ajusta el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.container {
+  padding: 6px; /* Ajusta el relleno del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 100px; /* Ancho máximo del contenedor */
+}
+
+.large-square-input {
+  width: 90px; /* Ajusta según el tamaño deseado */
+  height: 90px; /* Ajusta según el tamaño deseado */
+  font-size: 50px; /* Ajusta según el tamaño deseado */
+  text-align: center;
+}
+
+/* Estilos para los botones de carro */
+.car-buttons {
+  display: flex;
+}
+
+.car-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  padding: 5px;
+  cursor: pointer;
+  width: 60px; /* Ajustamos el ancho de los botones de los asientos */
+  height: 60px; /* Ajustamos el alto de los botones de los asientos */
+  font-size: 20px; /* Ajustamos el tamaño del texto dentro de los botones */
+  margin: 5px; /* Reducimos el espacio entre los botones */
+}
+
+.car-number {
+  font-size: 14px;
+}
+
+.custom-radio {
+  margin-right: 10px;
+}
+
+.car-button.active,
+.car-button.active:focus,
+.car-button.active:hover {
+  background-color: #bfbeff !important;
+  color: white !important;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #909498;
+  border-color: #909498;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #9e9ddb;
+  border-color: #615EFC;
+}
+
+/* Estilos específicos para los asientos */
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-asiento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 200px; /* Ajusta el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container {
+  padding: 6px; /* Ajusta el relleno del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 100px; /* Ancho máximo del contenedor */
+}
+
+.seat-container {
+  text-align: center; /* Centra el contenido dentro de cada asiento */
+}
+
+.seat {
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 59px; /* Ajusta el ancho de los asientos */
+  height: 59px; /* Ajusta el alto de los asientos */
+  font-size: 16px; /* Ajusta el tamaño del texto dentro de los asientos */
+  margin: auto; /* Centra horizontalmente cada asiento */
+}
+
+.w-100 {
+  width: 100%;
+  margin: 5px 0;
+}
+
+/* Estilos para los cuadros de Reservado y Vendido */
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-asiento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 200px; /* Ajusta el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.container {
+  padding: 6px; /* Ajusta el relleno del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 100px; /* Ancho máximo del contenedor */
+}
+
+.large-square-input {
+  width: 90px; /* Ajusta según el tamaño deseado */
+  height: 90px; /* Ajusta según el tamaño deseado */
+  font-size: 50px; /* Ajusta según el tamaño deseado */
+  text-align: center;
+}
+
+/* Estilos para los botones de carro */
+.car-buttons {
+  display: flex;
+}
+
+.car-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  padding: 5px;
+  cursor: pointer;
+  width: 60px; /* Ajustamos el ancho de los botones de los asientos */
+  height: 60px; /* Ajustamos el alto de los botones de los asientos */
+  font-size: 20px; /* Ajustamos el tamaño del texto dentro de los botones */
+  margin: 5px; /* Reducimos el espacio entre los botones */
+}
+
+.car-number {
+  font-size: 14px;
+}
+
+.custom-radio {
+  margin-right: 10px;
+}
+
+.car-button.active,
+.car-button.active:focus,
+.car-button.active:hover {
+  background-color: #615EFC !important;
+  color: white !important;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #909498;
+  border-color: #909498;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #615EFC;
+  border-color: #615EFC;
+}
+
+
+
