@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boleto de Viaje</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +16,7 @@
       <p>SEÑOR DE ANCARA E.I.R.L</p>
       <p>RUC: 20610663797</p>
     </div>
-  
+
     <div class="ticket-body">
       <p><strong>Pasajero:</strong> {{ pasajero.pasajero }} {{ pasajero.Apellido }}</p>
       <p><strong>DNI:</strong> {{ pasajero.dni }}</p>
@@ -29,7 +28,7 @@
       <p><strong>Precio:</strong> {{ pasajero.precio | currency }}</p>
       <p><strong>Estado:</strong> {{ pasajero.estado }}</p>
     </div>
-  
+
     <div class="ticket-footer">
       <p>El pasajero que no se presente a la hora indicada perderá el valor total del pasaje.</p>
       <p>Todo pasajero tendrá derecho a 15 Kg de equipaje.</p>
@@ -37,7 +36,7 @@
       <p>Todo pasajero se encuentra asegura en <strong>SEGUROS LA POSITIVA</strong></p>
     </div>
   </div>
-  
+
   <!-- Botón para imprimir fuera del contenedor del ticket -->
   <div class="print-button-container">
     <button (click)="printTicket()">Imprimir Ticket</button>

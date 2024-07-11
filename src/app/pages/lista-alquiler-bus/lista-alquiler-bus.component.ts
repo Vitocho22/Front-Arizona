@@ -50,13 +50,13 @@ export class ListaAlquilerBusComponent implements OnInit {
   }
 
   editAlquiler(id: number): void {
-  this.router.navigate(['/page/editar-alquiler', id]);
+  this.router.navigate(['/page/editaralquiler', id]);
 }
 
-  mostrarDetallesAlquiler(alquiler: Alquiler): void {
+  mostrarDetallesAlquiler(id: number): void {
     const dialogRef = this.dialog.open(BusAlquilerDetallesComponent, {
       width: '400px',
-      data: { alquiler: alquiler }
+      data: { id: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -66,7 +66,7 @@ export class ListaAlquilerBusComponent implements OnInit {
 
   onSearch(event: any): void {
     const query = event.target.value.toLowerCase();
-    this.filteredAlquileres = this.alquileres.filter(alquiler => 
+    this.filteredAlquileres = this.alquileres.filter(alquiler =>
       alquiler.dni.toLowerCase().includes(query)
     );
   }

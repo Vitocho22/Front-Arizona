@@ -55,42 +55,44 @@ button:hover {
 @media print {
   body {
     visibility: hidden;
-    overflow: hidden;
+    overflow: hidden; /* Evita barras de desplazamiento */
   }
-  
+
   .ticket-container, .ticket-container * {
     visibility: visible;
   }
 
   .ticket-container {
-    position: relative;
-    max-width: 100%;
+    position: center;
+    width: 400%; /* Ocupa todo el ancho de la página */
+    height: auto; /* Ajusta la altura automáticamente */
     margin: 0;
-    padding: 10px;
-    font-size: 16px;
+    padding: 0;
+    font-size: 18px; /* Tamaño de la letra aumentado */
   }
 
   .ticket-header, .ticket-body, .ticket-footer {
     text-align: center;
-  }
-  
-  .ticket-logo {
-    max-width: 60px;
-  }
-  
-  .ticket-title {
-    font-size: 24px;
-  }
-  
-  .ticket-body p {
-    margin: 4px 0;
-  }
-  
-  .ticket-footer {
-    font-size: 11px;
+    font-size: 18px; /* Tamaño de la letra aumentado */
   }
 
-  .print-button-container {
-    display: none;
+  .ticket-logo {
+    max-width: 100px; /* Tamaño máximo del logo */
+    margin: 0 auto 10px; /* Margen inferior */
+  }
+
+  .ticket-title {
+    font-size: 26px; /* Tamaño de la letra aumentado */
+    margin-bottom: 10px; /* Margen inferior */
+  }
+
+  .ticket-body p {
+    margin: 8px 0; /* Margen */
+    font-size: 18px; /* Tamaño de la letra aumentado */
+  }
+
+  .ticket-footer {
+    font-size: 16px; /* Tamaño de la letra aumentado */
+    margin-top: 10px; /* Margen superior */
   }
 }

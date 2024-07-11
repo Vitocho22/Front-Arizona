@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pasajero } from 'src/app/models/pasajero';
 import { PasajeroService } from 'src/app/services/pasajero.service';
+import { RerutaService } from 'src/app/services/reruta.service';
 
 @Component({
   selector: 'app-pasajeros-detalles',
@@ -11,14 +12,16 @@ import { PasajeroService } from 'src/app/services/pasajero.service';
   styleUrls: ['./pasajeros-detalles.component.scss']
 })
 export class PasajerosDetallesComponent implements OnInit {
-  pasajero: Pasajero | undefined;
+  pasajero: Pasajero;
   pasajeroId: number;
+  rutas: { [key: number]: string } = {};
 
   constructor(
     public dialogRef: MatDialogRef<PasajerosDetallesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number },
     private toastr: ToastrService,
     private pasajeroService: PasajeroService,
+    private rerutaService: RerutaService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -33,6 +36,7 @@ export class PasajerosDetallesComponent implements OnInit {
         this.obtenerPasajeroPorId(this.pasajeroId);
       });
     }
+    this.getRutas();
   }
 
   obtenerPasajeroPorId(id: number): void {
@@ -48,23 +52,26 @@ export class PasajerosDetallesComponent implements OnInit {
     );
   }
 
+  getRutas(): void {
+    this.rerutaService.getRuta().subscribe({
+      next: (rutas: any) => {
+        this.rutas = rutas.reduce((acc, ruta) => {
+          acc[ruta.id] = ruta.ruta;
+          return acc;
+        }, {});
+      },
+      error: (error) => {
+        console.error('Error al obtener las rutas:', error);
+        this.toastr.error('Error al obtener las rutas', 'Error');
+      }
+    });
+  }
+
+  getNombreRuta(id: number): string {
+    return this.rutas[id] || '';
+  }
+
   onClose(): void {
     this.dialogRef.close();
   }
-
-  regresarListaPasajero(): void {
-    this.router.navigate(['/page/listaPasajeros']);
-  }
-
-  // Define tus métodos auxiliares aquí
-  getNroCar(nrocar: number): string {
-    // Implementa tu lógica para obtener el número de carro
-    return ''; // Marcador de posición, reemplázalo con la lógica real
-  }
-
-  getNombreRuta(rutaId: number): string {
-    // Implementa tu lógica para obtener el nombre de la ruta
-    return ''; // Marcador de posición, reemplázalo con la lógica real
-  }
-
 }

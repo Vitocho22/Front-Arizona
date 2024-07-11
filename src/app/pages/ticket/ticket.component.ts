@@ -16,7 +16,6 @@ export class TicketComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private pasajeroService: PasajeroService,
     private rerutaService: RerutaService,
     private rebusesService: RebusesService
   ) {
@@ -28,7 +27,6 @@ export class TicketComponent implements OnInit {
       window.print();
     }, 1000); // Agregar un retraso de 1 segundo (1000 milisegundos)
   }
-  
 
   ngOnInit(): void {
     this.getRutas();
