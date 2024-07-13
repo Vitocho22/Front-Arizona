@@ -86,9 +86,9 @@ const routes: Routes = [
         path: "ticket", component: TicketComponent, canActivate: [AdminGuard]
       },
 
-    
 
-    
+
+
       // Buses
       {
         path: "registroBuses", component: BusesRegistroComponent, canActivate: [AdminGuard]
@@ -128,10 +128,10 @@ const routes: Routes = [
         path: "detallesPasajero/:id", component: PasajerosDetallesComponent, canActivate: [UserGuard]
       },
       {
-        path: "manifest/:id", component: ManifestComponent, canActivate: [UserGuard]
+        path: "manifest", component: ManifestComponent, canActivate: [UserGuard]
       },
 
-      
+
       // Alquiler
       {
         path: "registroBus", component: BusRegistroComponent, canActivate: [UserGuard]

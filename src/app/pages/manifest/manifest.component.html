@@ -45,22 +45,34 @@
 
         <div class="details">
           <div class="detail-row">
-            <label>FECHA DE SALIDA: 2024-07-1<!--{{ pasajero?.fechaViaje | date: 'yyyy-MM-dd' }}--> </label><span></span>
+            <label>FECHA DE SALIDA: {{ fechaSalida }}</label><span></span>
           </div>
           <div class="detail-row">
-            <label>HORA DE SALIDA: 7:00<!--{{ pasajero?.fechaViaje | date: 'yyyy-MM-dd' }}--> </label><span></span>
+            <label>HORA DE SALIDA: 7:00 </label><span></span>
           </div>
           <div class="detail-row">
-            <label>ORIGEN: Paucartambo<!--{{ getNombreRuta(pasajero?.origen) }}--> </label><span></span>
+            <label>ORIGEN: {{ origenSeleccionado ? getNombreRuta(origenSeleccionado) : '' }}</label>
+            <select [(ngModel)]="origenSeleccionado">
+              <option *ngFor="let ruta of rutas | keyvalue" [value]="ruta.key">{{ ruta.value }}</option>
+            </select>
           </div>
           <div class="detail-row">
-            <label>DESTINO: Lima<!--{{ getNombreRuta(pasajero?.destino) }}--> </label><span></span>
+            <label>DESTINO: {{ destinoSeleccionado ? getNombreRuta(destinoSeleccionado) : '' }}</label>
+            <select [(ngModel)]="destinoSeleccionado">
+              <option *ngFor="let ruta of rutas | keyvalue" [value]="ruta.key">{{ ruta.value }}</option>
+            </select>
           </div>
           <div class="detail-row">
-            <label>Nro de Placa: 7HL-D6T7<!--{{ getNombreRuta(pasajero?.destino) }}--> </label><span></span>
+            <label>Nro de Placa: {{ busSeleccionado?.nro_placa }}</label>
+            <select [(ngModel)]="busSeleccionado" (ngModelChange)="onBusSeleccionadoChange($event)">
+              <option *ngFor="let bus of buses" [ngValue]="bus">{{ bus.nroCarro }}</option>
+            </select>
           </div>
           <div class="detail-row">
-            <label>Nombre del conductor: Carlos Gutierrez Lopez<!--{{ getNombreRuta(pasajero?.destino) }}--> </label><span></span>
+            <label>Nombre del conductor: {{ conductorSeleccionado?.nombres }} {{ conductorSeleccionado?.apellidos }}</label>
+            <select [(ngModel)]="conductorSeleccionado">
+              <option *ngFor="let persona of personas" [ngValue]="persona">{{ persona.nombres }} {{ persona.apellidos }}</option>
+            </select>
           </div>
         </div>
 

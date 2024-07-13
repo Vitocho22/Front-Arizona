@@ -9,6 +9,7 @@ import { CredencialesComponent } from './pages/credenciales/credenciales.compone
 
 //api
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -127,13 +128,15 @@ import { ManifestComponent } from './pages/manifest/manifest.component';
     ToastrModule.forRoot(), // ToastrModule added
     MatDialogModule,
     MatButtonModule,
+    CommonModule
 
 
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
-  providers: [],
+  providers: [DatePipe],
   entryComponents: [TicketComponent,PersonalDetallesComponent,PasajerosDetallesComponent,EncomiendaDetallesComponent]
+
 
 })
 export class AppModule {}
